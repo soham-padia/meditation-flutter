@@ -10,30 +10,21 @@ Future<void> main() async {
 
   await Supabase.initialize(
     url: 'https://saevexsfyqgxatepzklg.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhZXZleHNmeXFneGF0ZXB6a2xnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY2OTkzMzUsImV4cCI6MTk5MjI3NTMzNX0.v4CPFq8qjqkDmQoCte489pDDPEXrRc_Rg0nay4Yynsk',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhZXZleHNmeXFneGF0ZXB6a2xnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY2OTkzMzUsImV4cCI6MTk5MjI3NTMzNX0.v4CPFq8qjqkDmQoCte489pDDPEXrRc_Rg0nay4Yynsk',
   );
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Supabase Flutter',
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.green,
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.green,
-          ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.green,
-          ),
-        ),
+      title: 'iBreathe',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{

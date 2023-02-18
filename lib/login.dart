@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ibreathe/showSnackBar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'Components/BackgroundImage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -68,23 +69,63 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign In')),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
-        children: [
-          const Text('Sign in via the magic link with your email below'),
-          const SizedBox(height: 18),
-          TextFormField(
-            controller: _emailController,
-            decoration: const InputDecoration(labelText: 'Email'),
+        body: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        BackgroundImage(),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            //padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Please SignIn',
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 25),
+              Material(
+                elevation: 10.0,
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30.0),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderSide: BorderSide.none),
+                    contentPadding: EdgeInsets.symmetric(
+                        vertical: 20 * 0.75, horizontal: 20),
+                    fillColor: Colors.white,
+                    hintText: 'Email',
+                    suffixIcon: Icon(
+                      Icons.email_outlined,
+                      size: 25.0,
+                      color: Colors.black.withOpacity(0.4),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 25),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey,
+                  ),
+                  onPressed: _isLoading ? null : _signIn,
+                  child: Text(_isLoading ? 'Loading' : 'Send Magic Link',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 18),
-          ElevatedButton(
-            onPressed: _isLoading ? null : _signIn,
-            child: Text(_isLoading ? 'Loading' : 'Send Magic Link'),
-          ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ));
   }
 }
